@@ -8,22 +8,25 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import fr.samneo.roazhonapp.R
 import fr.samneo.roazhonapp.data.DataSource
 import fr.samneo.roazhonapp.model.PointOfInterest
@@ -69,32 +72,40 @@ fun Pictures(
     onFullScreenClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Card(modifier) {
-        Column {
-            Box {
+
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier) {
+        Box {
+            Surface(shadowElevation = 10.dp, color = MaterialTheme.colorScheme.background) {
                 Image(
-                    painter = painterResource(id = photo), contentDescription = null
-                )
-                IconButton(
-                    onClick = onFullScreenClick, modifier = Modifier.align(Alignment.TopEnd)
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.baseline_open_in_full_black_24),
-                        stringResource(id = R.string.fullscreen)
+                    painter = painterResource(id = photo),
+                    contentDescription = null,
+                    modifier = Modifier.size(
+                        dimensionResource(id = R.dimen.detail_size_picture)
                     )
-                }
+
+                )
             }
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Button(onClick = onPreviousClick) {
-                    Text(stringResource(id = R.string.previous))
-                }
-                Spacer(modifier = Modifier.weight(1f))
-                Button(onClick = onNextClick) {
-                    Text(stringResource(id = R.string.next))
-                }
+            IconButton(
+                onClick = onFullScreenClick, modifier = Modifier.align(Alignment.TopEnd)
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.baseline_open_in_full_black_24),
+                    stringResource(id = R.string.fullscreen),
+                    tint = Color.Red
+                )
+            }
+        }
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Button(onClick = onPreviousClick) {
+                Text(stringResource(id = R.string.previous))
+            }
+            Spacer(modifier = Modifier.weight(1f))
+            Button(onClick = onNextClick) {
+                Text(stringResource(id = R.string.next))
             }
         }
     }
+
 }
 
 @Composable
@@ -109,7 +120,7 @@ fun Description(@StringRes description: Int, modifier: Modifier = Modifier) {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DetailWindowPreview() {
-    val pointOfInterest = DataSource.getRecommendations(DataSource.Category.RESTAURANTS)[0]
+    val pointOfInterest = DataSource.getRecommendations(DataSource.Category.PARKS)[3]
     AppTheme {
         DetailWindow(pointOfInterest = pointOfInterest,
             0,

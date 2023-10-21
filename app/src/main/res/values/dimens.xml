@@ -3,6 +3,8 @@
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_medium">16dp</dimen>
     <dimen name="padding_large">32dp</dimen>
-    <dimen name="recommendation_size_picture">64dp</dimen>
+    <dimen name="categories_size_picture">64dp</dimen>
+    <dimen name="recommendations_size_picture">256dp</dimen>
+    <dimen name="detail_size_picture">384dp</dimen>
 
 </resources>

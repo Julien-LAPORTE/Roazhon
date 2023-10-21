@@ -66,7 +66,7 @@ fun CategoryItem(
         Surface(shape = Shapes.small) {
             Image(
                 painter = painterResource(id = category.picture), null, Modifier.size(
-                    dimensionResource(id = R.dimen.recommendation_size_picture)
+                    dimensionResource(id = R.dimen.categories_size_picture)
                 ), contentScale = ContentScale.Crop
             )
         }

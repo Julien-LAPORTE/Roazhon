@@ -4,6 +4,7 @@ import androidx.activity.compose.BackHandler
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Icon
@@ -31,12 +32,17 @@ fun PhotosWindow(
     }
     Box(modifier) {
         SwipeableContent(
-            onSwipeLeft = onSwipeLeft, onSwipeRight = onSwipeRight, Modifier.align(
-                Alignment.Center
-            )
+            onSwipeLeft = onSwipeLeft, onSwipeRight = onSwipeRight,
+            Modifier
+                .align(
+                    Alignment.Center
+                )
+                .fillMaxSize()
         ) {
             Image(
-                painter = painterResource(id = photo), contentDescription = null
+                painter = painterResource(id = photo),
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize()
             )
         }
         IconButton(onClick = onBackClick) {
@@ -49,11 +55,11 @@ fun PhotosWindow(
     }
 }
 
-@Preview
+@Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun PhotosWindowPreview() {
     AppTheme {
-        PhotosWindow(photo = R.drawable.restaurants_cafe_breton_01,
+        PhotosWindow(photo = R.drawable.restaurants_racines_06,
             onSwipeLeft = {},
             onSwipeRight = {},
             onBackClick = {})
