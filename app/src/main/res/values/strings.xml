@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Roazhon App</string>
+    <string name="city_name">Rennes</string>
+    <string name="next">Suivant</string>
+    <string name="previous">Precédent</string>
+    <string name="fullscreen">Plein écran</string>
+    <string name="previous_screen">Ecran précédent</string>
+
+
+    <!--Restaurants-->
+    <string name="restaurants">Restaurants</string>
+    <string name="l_aoc_rennes_description">Plats de brasserie sophistiqués élaborés à partir de produits locaux de saison, servis dans un restaurant simple sur deux niveaux.</string>
+    <string name="la_reserve_description">Cuisine française à la présentation originale servie dans salle à manger raffinée sur deux niveaux ou en terrasse.</string>
+    <string name="le_globe_description">"Brasserie chaleureuse à l'ambiance rustique servant des plats principaux et des desserts traditionnels, ainsi que du vin."</string>
+    <string name="Racines_description">Menus dégustation et cuisine française innovante préparée avec des produits locaux, servis dans un cadre contemporain.</string>
+    <string name="le_bistrot_des_remparts_description">Ce restaurant au décor chaleureux propose une cuisine bistronomique à base de produits locaux de saison.</string>
+    <string name="café_breton_description">"Menu renouvelé de plats français raffinés dans un restaurant intimiste plein de caractère doté d'étagères de vins."</string>
+
+    <!--Coffee Shop-->
+    <string name="coffee_shops">Cafés</string>
+    <string name="café_1802_description">Poutres apparentes, chaises colorées et mezzanine dans un coffee shop aux préparations salées et sucrées.</string>
+    <string name="columbus_café_and_co_description">"Boissons, pâtisseries maison et sandwichs servis dans le cadre cosy d'une chaîne française de coffee-shops."</string>
+    <string name="mokka_coffee_house_description">Ce café moderne aux briques de parement sert des cafés de spécialité, des pâtisseries et des sandwichs.</string>
+    <string name="bourbon_d_arsel_description">Ce torréfacteur de cafés de spécialité avec terrasse propose des boissons et une petite restauration.</string>
+    <string name="bakery_kafé_description">Cette pâtisserie avec espace café propose des gourmandises maison, des formules repas et des jus de fruits.</string>
+
+    <!--Park-->
+    <string name="parks">Parcs</string>
+    <string name="parc_du_thabor_description">"Parc du XVIIIe siècle avec grands jardins paysagers et volières contenant des espèces d'oiseaux non indigènes."</string>
+    <string name="parc_des_gayeulles_description">"Vaste parc établi en 1967 doté d'une forêt, de clairières verdoyantes et de points d'eau".</string>
+    <string name="parc_de_bréquigny_description">"Grande oasis avec arbres d'ombrage, sentiers pavés, aire de jeux et pataugeoire ouverte en saison."</string>
+    <string name="parc_hamelin_oberthür_description">Paisible jardin botanique comprenant un petit bassin ainsi que des espaces paysagers et boisés.</string>
+    <string name="parc_de_maurepas_description">Parc arboré comportant des aires de jeux, des pelouses, une boucle cyclable de 300 m et une esplanade goudronnée pour les skateurs.</string>
+
+    <!--Mall-->
+    <string name="malls">Centres commerciaux</string>
+    <string name="alma_description">Enseignes mode, voyage et bien-être dans un centre commercial moderne avec espace interactif pour enfants.</string>
+    <string name="colombia_description">Centre commercial de 70 boutiques, sur 2 niveaux, avec banques, prêt de poussette, restaurants et pharmacie.</string>
+    <string name="la_visitation_description">Petit centre commercial comprenant un grand magasin, des boutiques, une boulangerie et un opticien.</string>
+    <string name="grand_quartier_description">"Centre commercial couvert contemporain comprenant quelques restaurants et 110 magasins, où l'on trouve de tout."</string>
+    <string name="saint_grégoire_le_centre_description">Centre commercial couvert lumineux de style contemporain comprenant plus de 50 magasins, dont un hypermarché.</string>
+
+    <!--Gas Station-->
+    <string name="gas_stations">Stations services</string>
+    <string name="access_total_energies_description">124 Av. Général Leclerc, 35000 Rennes</string>
+    <string name="e.leclerc_station_service_description">Rue Jules Vallès, 35000 Rennes</string>
+    <string name="intermarché_station_service_description">All. Morvan Lebesque, 35700 Rennes</string>
+
+    <!--Gym-->
+    <string name="gyms">Salles de sport</string>
+    <string name="best_of_gym_description">Best of Gym c’est LA salle de Sport and Fitness à Rennes, quel que soit votre objectif, votre âge, votre condition physique ou vos attentes, nous avons réuni le meilleur de la remise en forme dans un espace de près de 1300m² avec accès ILLIMITÉ 7j/7 de 6 à 23h et… au meilleur prix !\n\nUne ambiance de proximité conviviale et chaleureuse, des professionnels à votre disposition, de grands volumes de matériels haut de gamme, des zones training spacieuses adaptées à chacun, une déco unique et moderne, des cours collectifs variés, le tout sans contrainte horaire.\n\nVous cherchez une salle de sport sur Rennes pour pratiquer votre activité … alors BIENVENUE chez Best Of Gym !\nRéservez votre séance dès à présent, on vous invite !</string>
+    <string name="keepcool_colombier_description">Faire du sport pour être plus heureux, rayonner et être mieux dans sa peau, un moment d’évasion pour se dépasser et se faire plaisir. Laissez-vous embarquer par nos coachs experts qui vous guideront dans votre activité. Au club, à la maison, en extérieur ou en vacances, nous avons toujours un programme adapté pour vous accompagner dans votre routine sportive et bien-être.</string>
+    <string name="elancia_maginot_description">"Chez Elancia profitez d'un coaching personnalisé, au plus près de vos besoins et vos envies. Construisons ensemble un programme qui vous ressemble, à la salle de sport, à domicile ou à l'extérieur !"</string>
+    <string name="vanilla_fitness_description">Pour Vanilla Fitness, votre état de santé est important. C’est pourquoi, dès votre inscription dans notre centre de Rennes, nos coachs diplômés en aptitude physique adaptée réalisent votre bilan de forme personnalisé. Ce bilan de forme est constitué de plusieurs évaluations physiques et d’une analyse corporelle réalisée sur Tanita MC780 type 2 médical. Les résultats obtenus permettent à nos coachs de vous proposer un programme personnalisé et adapté à votre état de santé, tout en tenant compte de vos besoins et de vos attentes.</string>
+    <string name="rbc_workout_description">Une salle indépendante d’une superficie de 600 m² au sol + 200m² en mezzanine adaptée à tous les profils. Des espaces aménagés et équipés pour les disciplines suivantes : musculation avec une quarantaine de postes de travail, cardio avec une variété d’appareils, haltérophilie (salle affiliée FFHM) avec plateaux, barres et poids calibrés, force athlétique (salle affiliée FFF, combo racks, barres et poids calibrés), espace extérieur cross-training (cage street workout, pneus, masses, chariots, etc), zone tatamis pour les sports de combat (boxe) avec sacs de frappe.\n\nNotre équipe de coachs diplômés sera là pour vous encadrer et vous conseiller à tout moment de la journée.</string>
+
+</resources>
