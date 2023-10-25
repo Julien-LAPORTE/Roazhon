@@ -9,8 +9,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.ui.Modifier
-import fr.samneo.roazhonapp.data.DataSource
 import fr.samneo.roazhonapp.ui.MainWindow
+import fr.samneo.roazhonapp.ui.MainWindowNavHostListOnly
 import fr.samneo.roazhonapp.ui.theme.AppTheme
 
 class MainActivity : ComponentActivity() {

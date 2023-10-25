@@ -26,6 +26,10 @@ import androidx.navigation.compose.rememberNavController
 import fr.samneo.roazhonapp.R
 import fr.samneo.roazhonapp.controller.AppViewModel
 
+/*
+*  TODO: Navigation dynamique afin de s'adapter à plusieurs configurations d'écrans
+ */
+
 enum class AppWindow {
     CATEGORY,
     RECOMMENDATIONS,
@@ -40,7 +44,7 @@ fun AppTopBar(
 ) {
     CenterAlignedTopAppBar(
         title = {
-            Text(text = title)
+            Text(text = title, style = MaterialTheme.typography.titleMedium)
         },
         colors = TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.background
@@ -63,6 +67,14 @@ fun AppTopBar(
 @Composable
 fun MainWindow(
     windowSize: WindowWidthSizeClass,
+    modifier: Modifier = Modifier,
+    navController: NavHostController = rememberNavController()
+){
+
+}
+
+@Composable
+fun MainWindowNavHostListOnly(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController()
 ) {
