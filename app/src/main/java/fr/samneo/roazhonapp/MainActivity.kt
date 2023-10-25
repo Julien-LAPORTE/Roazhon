@@ -10,7 +10,6 @@ import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSiz
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.ui.Modifier
 import fr.samneo.roazhonapp.ui.MainWindow
-import fr.samneo.roazhonapp.ui.MainWindowNavHostListOnly
 import fr.samneo.roazhonapp.ui.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,8 +21,7 @@ class MainActivity : ComponentActivity() {
             AppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
                     val windowSize = calculateWindowSizeClass(this)
                     MainWindow(windowSize.widthSizeClass, Modifier.fillMaxSize())

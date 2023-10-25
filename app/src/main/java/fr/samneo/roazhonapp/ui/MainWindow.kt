@@ -69,14 +69,6 @@ fun MainWindow(
     windowSize: WindowWidthSizeClass,
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController()
-){
-
-}
-
-@Composable
-fun MainWindowNavHostListOnly(
-    modifier: Modifier = Modifier,
-    navController: NavHostController = rememberNavController()
 ) {
     val appViewModel: AppViewModel = viewModel()
     val uiState by appViewModel.uiState.collectAsState()
