@@ -1,5 +1,6 @@
 package fr.samneo.roazhonapp.ui
 
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -25,6 +26,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import fr.samneo.roazhonapp.R
 import fr.samneo.roazhonapp.controller.AppViewModel
+import fr.samneo.roazhonapp.ui.utils.ContentType
 
 /*
 *  TODO: Navigation dynamique afin de s'adapter à plusieurs configurations d'écrans
@@ -72,6 +74,10 @@ fun MainWindow(
 ) {
     val appViewModel: AppViewModel = viewModel()
     val uiState by appViewModel.uiState.collectAsState()
+    val contentType = when (windowSize) {
+        WindowWidthSizeClass.Expanded -> ContentType.LIST_AND_CONTENT
+        else -> ContentType.LIST_ONLY
+    }
 
     val backStackEntry by navController.currentBackStackEntryAsState()
     val title: String = when (backStackEntry?.destination?.route ?: AppWindow.CATEGORY.name) {
@@ -92,20 +98,21 @@ fun MainWindow(
             }
         },
     ) { paddingValue ->
+
         NavHost(
             navController = navController,
-            startDestination = AppWindow.CATEGORY.name,
-            modifier = modifier.padding(paddingValue)
-        ) {
-            composable(AppWindow.CATEGORY.name) {
+            contentType = contentType,
+            categoriesWindow = {
                 CategoriesWindow(
                     onCategoryClick = {
                         appViewModel.updateCategory(it)
-                        navController.navigate(AppWindow.RECOMMENDATIONS.name)
+                        if (contentType == ContentType.LIST_ONLY) navController.navigate(
+                            AppWindow.RECOMMENDATIONS.name
+                        )
                     },
                 )
-            }
-            composable(AppWindow.RECOMMENDATIONS.name) {
+            },
+            recommendationWindow = {
                 RecommendationWindows(
                     category = uiState.category,
                     onRecommendationClick = { pointOfInterest ->
@@ -113,9 +120,10 @@ fun MainWindow(
                         navController.navigate(AppWindow.DETAIL.name)
                     },
                 )
-            }
-            composable(AppWindow.DETAIL.name) {
+            },
+            detailWindow = {
                 DetailWindow(
+                    contentType = contentType,
                     pointOfInterest = uiState.pointOfInterest,
                     indexPhotos = uiState.index,
                     onPreviousClick = { appViewModel.getPreviousPhoto() },
@@ -125,8 +133,8 @@ fun MainWindow(
                         navController.navigate(AppWindow.PHOTOS.name)
                     },
                 )
-            }
-            composable(AppWindow.PHOTOS.name) {
+            },
+            photosWindow = {
                 PhotosWindow(
                     photo = uiState.pointOfInterest.photos[uiState.index],
                     onSwipeLeft = {
@@ -140,8 +148,60 @@ fun MainWindow(
                         navController.popBackStack()
                     },
                 )
-            }
-        }
+            },
+            modifier = modifier.padding(paddingValue),
+        )
     }
 
+}
+
+@Composable
+fun NavHost(
+    navController: NavHostController,
+    contentType: ContentType,
+    categoriesWindow: @Composable () -> Unit,
+    recommendationWindow: @Composable () -> Unit,
+    detailWindow: @Composable () -> Unit,
+    photosWindow: @Composable () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    NavHost(
+        navController = navController, startDestination = AppWindow.CATEGORY.name, modifier = modifier
+    ) {
+        composable(AppWindow.CATEGORY.name) {
+            when (contentType) {
+                ContentType.LIST_ONLY -> {
+                    categoriesWindow()
+                }
+
+                ContentType.LIST_AND_CONTENT -> {
+                    Row {
+                        categoriesWindow()
+                        recommendationWindow()
+                    }
+                }
+            }
+        }
+        composable(AppWindow.RECOMMENDATIONS.name) {
+            when (contentType) {
+                ContentType.LIST_ONLY -> {
+                    recommendationWindow()
+                }
+
+                ContentType.LIST_AND_CONTENT -> {
+                    Row {
+                        categoriesWindow()
+                        recommendationWindow()
+                    }
+                }
+            }
+        }
+
+        composable(AppWindow.DETAIL.name) {
+            detailWindow()
+        }
+        composable(AppWindow.PHOTOS.name) {
+            photosWindow()
+        }
+    }
 }

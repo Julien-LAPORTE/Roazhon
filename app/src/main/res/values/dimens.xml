@@ -5,6 +5,7 @@
     <dimen name="padding_large">32dp</dimen>
     <dimen name="categories_size_picture">64dp</dimen>
     <dimen name="recommendations_size_picture">256dp</dimen>
-    <dimen name="detail_size_picture">384dp</dimen>
+    <dimen name="detail_size_picture_small_device">384dp</dimen>
+    <dimen name="detail_size_picture_extended_device">264dp</dimen>
 
 </resources>

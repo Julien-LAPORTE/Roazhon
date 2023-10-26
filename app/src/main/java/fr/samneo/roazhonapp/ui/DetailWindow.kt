@@ -1,8 +1,10 @@
 package fr.samneo.roazhonapp.ui
 
+import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,9 +33,11 @@ import fr.samneo.roazhonapp.R
 import fr.samneo.roazhonapp.data.DataSource
 import fr.samneo.roazhonapp.model.PointOfInterest
 import fr.samneo.roazhonapp.ui.theme.AppTheme
+import fr.samneo.roazhonapp.ui.utils.ContentType
 
 @Composable
 fun DetailWindow(
+    contentType: ContentType,
     pointOfInterest: PointOfInterest,
     indexPhotos: Int,
     onPreviousClick: () -> Unit,
@@ -42,47 +46,75 @@ fun DetailWindow(
     modifier: Modifier = Modifier
 ) {
     val scrollState = rememberScrollState()
-    Column(modifier = modifier.verticalScroll(state = scrollState, enabled = true)) {
-        Spacer(modifier = Modifier.weight(1f))
-        Pictures(
-            photo = pointOfInterest.photos[indexPhotos],
-            onPreviousClick = onPreviousClick,
-            onNextClick = onNextClick,
-            onFullScreenClick = onFullScreenClick
-        )
-        Spacer(modifier = Modifier.weight(0.25f))
-        Divider()
-        Description(
-            description = pointOfInterest.description, modifier = Modifier.padding(
-                start = dimensionResource(
-                    id = R.dimen.padding_medium
-                ), end = dimensionResource(id = R.dimen.padding_medium)
-            )
-        )
-        Divider()
-        Spacer(modifier = Modifier.weight(1f))
+
+    when (contentType) {
+        ContentType.LIST_ONLY -> {
+            Column(
+                modifier = modifier.verticalScroll(state = scrollState, enabled = true),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Spacer(modifier = Modifier.weight(1f))
+                Pictures(
+                    photo = pointOfInterest.photos[indexPhotos],
+                    onPreviousClick = onPreviousClick,
+                    onNextClick = onNextClick,
+                    onFullScreenClick = onFullScreenClick,
+                    pictureSize = R.dimen.detail_size_picture_small_device
+                )
+                Spacer(Modifier.weight(0.25f))
+                Divider()
+                Description(
+                    description = pointOfInterest.description, modifier = Modifier.padding(
+                        start = dimensionResource(
+                            id = R.dimen.padding_medium
+                        ), end = dimensionResource(id = R.dimen.padding_medium)
+                    )
+                )
+                Divider()
+                Spacer(modifier = Modifier.weight(1f))
+            }
+        }
+
+        ContentType.LIST_AND_CONTENT -> {
+            Row(modifier = modifier) {
+                Pictures(
+                    photo = pointOfInterest.photos[indexPhotos],
+                    onPreviousClick = onPreviousClick,
+                    onNextClick = onNextClick,
+                    onFullScreenClick = onFullScreenClick,
+                    pictureSize = R.dimen.detail_size_picture_extended_device,
+                )
+                Description(
+                    description = pointOfInterest.description, modifier = Modifier.padding(
+                        dimensionResource(id = R.dimen.padding_small)
+                    )
+                )
+            }
+        }
     }
+
 }
 
 @Composable
 fun Pictures(
     @DrawableRes photo: Int,
+    @DimenRes pictureSize: Int,
     onPreviousClick: () -> Unit,
     onNextClick: () -> Unit,
     onFullScreenClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-
-    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier
+    ) {
         Box {
             Surface(shadowElevation = 10.dp, color = MaterialTheme.colorScheme.background) {
                 Image(
                     painter = painterResource(id = photo),
                     contentDescription = null,
-                    modifier = Modifier.size(
-                        dimensionResource(id = R.dimen.detail_size_picture)
-                    )
-
+                    modifier = Modifier.size(dimensionResource(id = pictureSize))
                 )
             }
             IconButton(
@@ -95,11 +127,11 @@ fun Pictures(
                 )
             }
         }
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row {
             Button(onClick = onPreviousClick) {
                 Text(stringResource(id = R.string.previous))
             }
-            Spacer(modifier = Modifier.weight(1f))
+            //Spacer(modifier = Modifier.weight(1f))
             Button(onClick = onNextClick) {
                 Text(stringResource(id = R.string.next))
             }
@@ -117,12 +149,13 @@ fun Description(@StringRes description: Int, modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 fun DetailWindowPreview() {
     val pointOfInterest = DataSource.getRecommendations(DataSource.Category.PARKS)[3]
     AppTheme {
-        DetailWindow(pointOfInterest = pointOfInterest,
+        DetailWindow(contentType = ContentType.LIST_ONLY,
+            pointOfInterest = pointOfInterest,
             0,
             onPreviousClick = {},
             onNextClick = {},
@@ -135,7 +168,12 @@ fun DetailWindowPreview() {
 fun PicturesPreview() {
     val photo = DataSource.getRecommendations(DataSource.Category.RESTAURANTS)[0].photos[0]
     AppTheme {
-        Pictures(photo = photo, onPreviousClick = {}, onNextClick = {}, onFullScreenClick = {})
+        Pictures(photo = photo,
+            onPreviousClick = {},
+            onNextClick = {},
+            onFullScreenClick = {},
+            pictureSize = R.dimen.detail_size_picture_small_device
+        )
     }
 }
 

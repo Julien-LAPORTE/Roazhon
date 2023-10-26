@@ -27,8 +27,11 @@ import fr.samneo.roazhonapp.ui.theme.AppTheme
 import fr.samneo.roazhonapp.ui.theme.Shapes
 
 @Composable
-fun CategoriesWindow(onCategoryClick: (DataSource.Category)-> Unit,modifier: Modifier = Modifier) {
-    Column {
+fun CategoriesWindow(
+    onCategoryClick: (DataSource.Category) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(Modifier) {
         Spacer(modifier = Modifier.weight(1f))
         CategoryItemList(
             categories = DataSource.Category.values().toList(), onCategoryClick, modifier = modifier
@@ -46,7 +49,9 @@ fun CategoryItemList(
     LazyColumn(modifier) {
         items(categories) {
             CategoryItem(
-                category = it, onCategoryClick, Modifier.padding(dimensionResource(id = R.dimen.padding_small))
+                category = it,
+                onCategoryClick,
+                Modifier.padding(dimensionResource(id = R.dimen.padding_small))
             )
         }
     }
