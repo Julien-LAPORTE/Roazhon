@@ -28,10 +28,6 @@ import fr.samneo.roazhonapp.R
 import fr.samneo.roazhonapp.controller.AppViewModel
 import fr.samneo.roazhonapp.ui.utils.ContentType
 
-/*
-*  TODO: Navigation dynamique afin de s'adapter à plusieurs configurations d'écrans
- */
-
 enum class AppWindow {
     CATEGORY,
     RECOMMENDATIONS,
